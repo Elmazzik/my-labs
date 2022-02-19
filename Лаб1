@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+using namespace std;
+struct Weather
+{
+	double temperature = 0, speed = 0;
+	string precipitation, wind;
+};
+Weather GetWeather()
+{
+	Weather  x;
+	cout << "enter temperature: " << endl;
+	cin >> x.temperature;
+	cout << "enter speed: " << endl;
+	cin >> x.speed;
+	cout << "enter precipitation: " << endl;
+	cin >> x.precipitation;
+	cout << "enter wind: " << endl;
+	cin >> x.wind;
+	return x;
+}
+int main()
+{
+	string flag;
+	double AvgT = 0, AvgS = 0;
+	int r = 0, s = 0, i = 0;
+	while (flag != "quit")
+	{
+		Weather x;
+		i++;
+		cout << "day" << i << endl;
+		x = GetWeather();
+		AvgT = AvgT + x.temperature;
+		AvgS = AvgS + x.speed;
+		if (x.precipitation == "rain")
+		{
+			r++;
+		}
+		if (x.precipitation == "snow")
+		{
+			s++;
+		}
+		cout << "enter quit to finish" << endl;
+		cin >> flag;
+	}
+		cout << "Average temperature: " << AvgT / i << endl;
+		cout << "Average wind speed : " << AvgS / i << endl;
+	if (s > r)
+	{
+		cout << "Precipitation: snow";
+	}
+	else
+	{
+		cout << "Precipitation: rain";
+	}
+}
